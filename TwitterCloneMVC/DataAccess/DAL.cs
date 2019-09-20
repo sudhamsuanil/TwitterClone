@@ -10,6 +10,19 @@ namespace TwitterCloneMVC.DataAccess
     public class DAL
     {
 
+        public List<Tweet> ManageTweets(string userid)
+        {
+            List<Tweet> tweets = new List<Tweet>();
+            using (FSDEntities dbContext = new FSDEntities())
+            {
+
+                tweets = dbContext.Tweets.Where(x => x.user_id == userid).ToList();
+
+            }
+            return tweets;
+
+        }
+
         public List<FollowersEntity> GetFollowers(string userId)
         {
             List<FollowersEntity> ent = new List<FollowersEntity>();

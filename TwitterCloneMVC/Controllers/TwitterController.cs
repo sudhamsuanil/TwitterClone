@@ -82,12 +82,7 @@ namespace TwitterCloneMVC.Controllers
             {
                 List<Tweet> tweets = new List<Tweet>();
                 string userid = Session["UserId"].ToString();
-                using (FSDEntities dbContext = new FSDEntities())
-                {
-
-                    tweets = dbContext.Tweets.Where(x => x.user_id == userid).ToList();
-                    
-                }
+                tweets=dal.ManageTweets(userid);
 
                 return View(tweets);
             }
